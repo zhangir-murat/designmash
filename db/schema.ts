@@ -1,6 +1,7 @@
 import { sql } from 'drizzle-orm';
 import { index, integer, real, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 const created = () => text('created_at').notNull().default(sql`CURRENT_TIMESTAMP`);
+export const seedUpdates=sqliteTable('seed_updates',{id:text('id').primaryKey(),createdAt:created()});
 export const categories = sqliteTable('categories',{id:text('id').primaryKey(),slug:text('slug').notNull().unique(),name:text('name').notNull(),createdAt:created()});
 export const entries=sqliteTable('entries',{id:text('id').primaryKey(),categoryId:text('category_id').notNull().references(()=>categories.id),name:text('name').notNull(),company:text('company').notNull().default(''),slug:text('slug').notNull().unique(),imageUrl:text('image_url'),sourceUrl:text('source_url').notNull().default(''),websiteUrl:text('website_url').notNull().default(''),eloRating:real('elo_rating').notNull().default(1500),wins:integer('wins').notNull().default(0),losses:integer('losses').notNull().default(0),totalVotes:integer('total_votes').notNull().default(0),active:integer('active',{mode:'boolean'}).notNull().default(true),submissionStatus:text('submission_status').notNull().default('approved'),createdAt:created()},t=>[index('entries_pool').on(t.categoryId,t.active,t.submissionStatus)]);
 export const sessions=sqliteTable('sessions',{id:text('id').primaryKey(),lastVoteAt:text('last_vote_at'),createdAt:created()});

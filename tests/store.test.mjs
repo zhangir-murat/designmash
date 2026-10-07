@@ -26,12 +26,12 @@ class Stmt{
 const db={prepare:s=>new Stmt(s),batch:async statements=>{sqlite.exec('BEGIN');try{const results=[];for(const stmt of statements)results.push(await stmt.run());sqlite.exec('COMMIT');return results;}catch(e){sqlite.exec('ROLLBACK');throw e;}}};
 const rpc=(name,body)=>localStore(db,'/rest/v1/rpc/'+name,{method:'POST',body:JSON.stringify(body)});
 const session=crypto.randomUUID(),challenge=crypto.randomUUID();
-test('durable store seeds exactly 60 entries, across all six pools',async()=>{const rows=await localStore(db,'/rest/v1/entries?active=eq.true&select=*');assert.equal(rows.length,60);assert.ok(rows.every(e=>e.active===true));});
+test('durable store seeds exactly 216 entries, across all six pools',async()=>{const rows=await localStore(db,'/rest/v1/entries?active=eq.true&select=*');assert.equal(rows.length,216);assert.ok(rows.every(e=>e.active===true));});
 test('atomic server vote persists both Elo changes and rejects replay',async()=>{
  await rpc('issue_matchup',{p_id:challenge,p_session:session,p_category:'names',p_left:'names-perplexity',p_right:'names-cursor'});
  const r=await rpc('cast_vote',{p_matchup:challenge,p_session:session,p_winner:'names-perplexity'});assert.equal(r.winner_rating,1516);assert.equal(r.loser_rating,1484);
  await assert.rejects(()=>rpc('cast_vote',{p_matchup:challenge,p_session:session,p_winner:'names-cursor'}),/already been counted/);
- const rows=await localStore(db,'/rest/v1/entries?category_id=eq.names');assert.equal(rows.find(e=>e.id==='names-perplexity').wins,1);assert.equal(rows.find(e=>e.id==='names-cursor').losses,1);assert.equal(rows.reduce((n,e)=>n+e.elo_rating,0),15000);
+ const rows=await localStore(db,'/rest/v1/entries?category_id=eq.names');assert.equal(rows.find(e=>e.id==='names-perplexity').wins,1);assert.equal(rows.find(e=>e.id==='names-cursor').losses,1);assert.equal(rows.reduce((n,e)=>n+e.elo_rating,0),150000);
 });
 test('challenges reject cross-category pairs, forged sessions and outside winners',async()=>{
  await assert.rejects(()=>rpc('issue_matchup',{p_id:crypto.randomUUID(),p_session:session,p_category:'names',p_left:'names-cursor',p_right:'logos-nike'}));
@@ -44,8 +44,8 @@ test('rankings and item history reflect counted votes',async()=>{
 });
 test('submissions stay pending until atomically approved',async()=>{
  const id=await rpc('submit_entry',{p_data:{category:'names',name:'A Test Name',session_id:session}});const pending=await localStore(db,'/rest/v1/submissions?status=eq.pending');assert.equal(pending.length,1);
- assert.equal((await localStore(db,'/rest/v1/entries?category_id=eq.names')).length,10);
- await rpc('approve_submission',{p_id:id});assert.equal((await localStore(db,'/rest/v1/entries?category_id=eq.names')).length,11);
+ assert.equal((await localStore(db,'/rest/v1/entries?category_id=eq.names')).length,100);
+ await rpc('approve_submission',{p_id:id});assert.equal((await localStore(db,'/rest/v1/entries?category_id=eq.names')).length,101);
  await assert.rejects(()=>rpc('approve_submission',{p_id:id}),/already been reviewed/);
 });
 test('removal requests persist and can be reviewed',async()=>{
