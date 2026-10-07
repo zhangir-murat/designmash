@@ -5,16 +5,22 @@ export type Database = {prepare(sql:string):Statement;batch(statements:Statement
 let seeded:Promise<void>|null=null;
 export async function initialize(db:Database){
  if(!seeded){seeded=(async()=>{
- const version='logos-names-2026-10-06';
- if(await db.prepare('SELECT id FROM seed_updates WHERE id=?').bind(version).first())return;
+ const updates=[
+  {version:'logos-names-2026-10-06',rows:(['logos','names'] as const).flatMap(c=>seedEntries.filter(e=>e.category_id===c).slice(10))},
+  {version:'checkout-pages-2026-10-07',rows:seedEntries.filter(e=>e.category_id==='checkout-page').slice(10)},
+ ];
+ for(const update of updates){
+ const {version}=update;
+ if(await db.prepare('SELECT id FROM seed_updates WHERE id=?').bind(version).first())continue;
  const found=await db.prepare('SELECT id FROM entries LIMIT 1').first();
- // The original ten entries per category have already been moderated. Expand
- // existing databases with only the new logo/name rows; never restore deletions.
- const rows=found?(['logos','names'] as const).flatMap(c=>seedEntries.filter(e=>e.category_id===c).slice(10)):seedEntries;
+ // A recorded update must never restore a deleted or moderated seed. Existing
+ // databases receive only that update's additions; a fresh database gets all.
+ const rows=found?update.rows:seedEntries;
  const statements=categories.map(c=>db.prepare('INSERT OR IGNORE INTO categories(id,slug,name) VALUES(?,?,?)').bind(c.slug,c.slug,c.name));
  for(const e of rows)statements.push(db.prepare('INSERT OR IGNORE INTO entries(id,category_id,name,company,slug,image_url,source_url,website_url) SELECT ?,?,?,?,?,?,?,? WHERE NOT EXISTS(SELECT 1 FROM seed_updates WHERE id=?)').bind(e.id,e.category_id,e.name,e.company,e.slug,e.image_url,e.source_url,e.website_url,version));
  statements.push(db.prepare('INSERT OR IGNORE INTO seed_updates(id) VALUES(?)').bind(version));
- await db.batch(statements);})().catch(e=>{seeded=null;throw e;});}await seeded;
+ await db.batch(statements);}
+ })().catch(e=>{seeded=null;throw e;});}await seeded;
 }
 const safeTables=new Set(['entries','matchups','votes','submissions','removal_requests']);
 const fields:Record<string,Set<string>>={

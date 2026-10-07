@@ -78,12 +78,52 @@ const names = [
   ['Wayfair', 'Wayfair', 'https://wayfair.com'],
 ];
 const landing = [names[2], names[3], names[4], names[5], names[6], names[7], names[8], names[9], brands[3], brands[4]];
+// Checkout additions from the supplied October 7 report; cart URL verification
+// does not guarantee access by the screenshot renderer.
+// Row format: [name, company, website_url].
+const checkoutNew = [
+  ['Microsoft Store Checkout', 'Microsoft', 'https://www.microsoft.com/en-us/store/cart'],
+  ['Google Store Checkout', 'Google', 'https://store.google.com/cart'],
+  ['Nintendo Checkout', 'Nintendo', 'https://www.nintendo.com/us/cart/'],
+  ['PlayStation Store Checkout', 'Sony', 'https://store.playstation.com/en-us/pages/cart/'],
+  ['Xbox Checkout', 'Microsoft', 'https://www.xbox.com/en-US/cart'],
+  ['Steam Checkout', 'Valve', 'https://store.steampowered.com/cart/'],
+  ['Sonos Checkout', 'Sonos', 'https://www.sonos.com/en-us/emptycart'],
+  ['Bose Checkout', 'Bose', 'https://www.bose.com/cart'],
+  ['LEGO Checkout', 'LEGO', 'https://www.lego.com/en-us/cart'],
+  ['IKEA Checkout', 'IKEA', 'https://www.ikea.com/us/en/shoppingcart/'],
+  ['Zara Checkout', 'Zara', 'https://www.zara.com/us/en/shop/cart'],
+  ['Sephora Checkout', 'Sephora', 'https://www.sephora.com/basket'],
+  ['Ulta Checkout', 'Ulta', 'https://www.ulta.com/bag'],
+  ['Nordstrom Checkout', 'Nordstrom', 'https://www.nordstrom.com/shopping-bag'],
+  ['Lowe\'s Checkout', 'Lowe\'s', 'https://www.lowes.com/cart'],
+  ['Foot Locker Checkout', 'Foot Locker', 'https://www.footlocker.com/cart'],
+  ['Allbirds Checkout', 'Allbirds', 'https://www.allbirds.com/cart'],
+  ['Casper Checkout', 'Casper', 'https://casper.com/cart'],
+  ['Peloton Checkout', 'Peloton', 'https://www.onepeloton.com/cart'],
+  ['Logitech Checkout', 'Logitech', 'https://www.logitech.com/en-us/cart'],
+  ['Newegg Checkout', 'Newegg', 'https://secure.newegg.com/shop/cart'],
+  ['Under Armour Checkout', 'Under Armour', 'https://www.underarmour.com/en-us/cart/'],
+  ['Gap Checkout', 'Gap', 'https://secure-www.gap.com/shopping-bag'],
+  ['DSW Checkout', 'DSW', 'https://www.dsw.com/cart'],
+  ['JCPenney Checkout', 'JCPenney', 'https://www.jcpenney.com/cart'],
+  ['Razer Checkout', 'Razer', 'https://www.razer.com/cart'],
+  ['Corsair Checkout', 'Corsair', 'https://www.corsair.com/us/en/cart'],
+  ['Barnes & Noble Checkout', 'Barnes & Noble', 'https://www.barnesandnoble.com/cart'],
+  ['Champs Sports Checkout', 'Champs Sports', 'https://www.champssports.com/cart'],
+  ['Reebok Checkout', 'Reebok', 'https://www.reebok.com/cart'],
+  ['Crocs Checkout', 'Crocs', 'https://www.crocs.com/cart'],
+  ['GOG Checkout', 'GOG', 'https://www.gog.com/cart'],
+  ['Fanatical Checkout', 'Fanatical', 'https://www.fanatical.com/en/cart']
+];
+
 const checkout = [
   ['Shopify Checkout', 'Shopify', 'https://www.shopify.com'], ['Stripe Checkout', 'Stripe', 'https://stripe.com/payments/checkout'],
   ['Amazon Checkout', 'Amazon', 'https://www.amazon.com'], ['Airbnb Checkout', 'Airbnb', 'https://www.airbnb.com'],
   ['Apple Checkout', 'Apple', 'https://www.apple.com'], ['Nike Checkout', 'Nike', 'https://www.nike.com'],
   ['Etsy Checkout', 'Etsy', 'https://www.etsy.com'], ['eBay Checkout', 'eBay', 'https://www.ebay.com'],
   ['Target Checkout', 'Target', 'https://www.target.com'], ['Walmart Checkout', 'Walmart', 'https://www.walmart.com'],
+  ...checkoutNew,
 ];
 const chat = [
   ['ChatGPT', 'OpenAI', 'https://chatgpt.com'], ['Claude', 'Anthropic', 'https://claude.ai'],
@@ -100,10 +140,11 @@ const ceos = [
   ['Patrick Collison', 'Stripe', 'https://stripe.com'], ['Melanie Perkins', 'Canva', 'https://www.canva.com'],
   ['Tobias Lütke', 'Shopify', 'https://www.shopify.com'], ['Aaron Levie', 'Box', 'https://www.box.com'],
 ];
+const checkoutScreenshotNames = new Set(checkoutNew.map(row => row[0]));
 const pools: Record<Category, string[][]> = { logos: brands, names, 'landing-page': landing, 'checkout-page': checkout, 'chat-page': chat, ceo: ceos };
 export const seedEntries: Entry[] = categories.flatMap(c => pools[c.slug].map((row) => {
   const slug = `${c.slug}-${row[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '')}`;
-  return { id: slug, slug, category_id: c.slug, name: row[0], company: row[1], website_url: row[2], source_url: row[2], image_url: c.slug === 'logos' ? `/logos/${slug.slice('logos-'.length)}.svg` : null, elo_rating: 1500, wins: 0, losses: 0, total_votes: 0, active: true, submission_status: 'approved' };
+  return { id: slug, slug, category_id: c.slug, name: row[0], company: row[1], website_url: row[2], source_url: row[2], image_url: c.slug === 'logos' ? `/logos/${slug.slice('logos-'.length)}.svg` : c.slug === 'checkout-page' && checkoutScreenshotNames.has(row[0]) ? `https://s0.wp.com/mshots/v1/${encodeURIComponent(row[2])}?w=1280` : null, elo_rating: 1500, wins: 0, losses: 0, total_votes: 0, active: true, submission_status: 'approved' };
 }));
 export const categoryLabel = (slug: string) => categories.find(c => c.slug === slug)?.label ?? slug;
 export const isCategory = (value: string): value is Category => categories.some(c => c.slug === value);

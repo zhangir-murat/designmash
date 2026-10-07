@@ -26,7 +26,7 @@ class Stmt{
 const db={prepare:s=>new Stmt(s),batch:async statements=>{sqlite.exec('BEGIN');try{const results=[];for(const stmt of statements)results.push(await stmt.run());sqlite.exec('COMMIT');return results;}catch(e){sqlite.exec('ROLLBACK');throw e;}}};
 const rpc=(name,body)=>localStore(db,'/rest/v1/rpc/'+name,{method:'POST',body:JSON.stringify(body)});
 const session=crypto.randomUUID(),challenge=crypto.randomUUID();
-test('durable store seeds exactly 216 entries, across all six pools',async()=>{const rows=await localStore(db,'/rest/v1/entries?active=eq.true&select=*');assert.equal(rows.length,216);assert.ok(rows.every(e=>e.active===true));});
+test('durable store seeds exactly 249 entries, across all six pools',async()=>{const rows=await localStore(db,'/rest/v1/entries?active=eq.true&select=*');assert.equal(rows.length,249);assert.ok(rows.every(e=>e.active===true));});
 test('atomic server vote persists both Elo changes and rejects replay',async()=>{
  await rpc('issue_matchup',{p_id:challenge,p_session:session,p_category:'names',p_left:'names-perplexity',p_right:'names-cursor'});
  const r=await rpc('cast_vote',{p_matchup:challenge,p_session:session,p_winner:'names-perplexity'});assert.equal(r.winner_rating,1516);assert.equal(r.loser_rating,1484);

@@ -6,9 +6,9 @@ const dataSource=readFileSync(new URL('../lib/designmash/data.ts',import.meta.ur
 const data=await import('data:text/javascript;base64,'+Buffer.from(ts.transpile(dataSource,{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022})).toString('base64'));
 const matchSource=readFileSync(new URL('../lib/designmash/matchmaking.ts',import.meta.url),'utf8');
 const mm=await import('data:text/javascript;base64,'+Buffer.from(ts.transpile(matchSource,{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022})).toString('base64'));
-test('exactly six concrete pools plus random, with 76 logos, 100 names, and 10 entries in each other pool',()=>{
- assert.equal(data.categories.length,6);assert.equal(data.seedEntries.length,216);assert.equal(new Set(data.seedEntries.map(e=>e.id)).size,216);
- for(const c of data.categories){const pool=data.seedEntries.filter(e=>e.category_id===c.slug);assert.equal(pool.length,c.slug==='logos'?76:c.slug==='names'?100:10);assert.ok(pool.every(e=>e.elo_rating===1500&&e.total_votes===0));}
+test('exactly six concrete pools plus random, with 76 logos, 100 names, 43 checkout pages, and 10 entries in each remaining pool',()=>{
+ assert.equal(data.categories.length,6);assert.equal(data.seedEntries.length,249);assert.equal(new Set(data.seedEntries.map(e=>e.id)).size,249);
+ for(const c of data.categories){const pool=data.seedEntries.filter(e=>e.category_id===c.slug);assert.equal(pool.length,c.slug==='logos'?76:c.slug==='names'?100:c.slug==='checkout-page'?43:10);assert.ok(pool.every(e=>e.elo_rating===1500&&e.total_votes===0));}
 });
 test('all logo assets resolve locally',()=>{for(const e of data.seedEntries.filter(e=>e.category_id==='logos'))assert.ok(existsSync(new URL('../public'+e.image_url,import.meta.url)),e.name);});
 test('matchmaking never repeats a pair until all 45 are exhausted',()=>{
