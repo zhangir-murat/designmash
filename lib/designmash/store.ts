@@ -4,12 +4,21 @@ export type Statement = {bind(...values:any[]):Statement; first<T=any>():Promise
 export type Database = {prepare(sql:string):Statement;batch(statements:Statement[]):Promise<{results?:any[];meta:{changes:number}}[]>};
 let seeded:Promise<void>|null=null;
 export async function initialize(db:Database){
- if(!seeded){seeded=(async()=>{const found=await db.prepare('SELECT id FROM categories LIMIT 1').first();if(found)return;
- const statements=categories.map(c=>db.prepare('INSERT OR IGNORE INTO categories(id,slug,name) VALUES(?,?,?)').bind(c.slug,c.slug,c.name));
- for(const e of seedEntries)statements.push(db.prepare('INSERT OR IGNORE INTO entries(id,category_id,name,company,slug,image_url,source_url,website_url) VALUES(?,?,?,?,?,?,?,?)').bind(e.id,e.category_id,e.name,e.company,e.slug,e.image_url,e.source_url,e.website_url));
- await db.batch(statements);})().catch(e=>{seeded=null;throw e;});}await seeded;
+ if(!seeded){seeded=(async()=>{
+  const statements:Statement[]=[];
+  for(const c of categories)statements.push(db.prepare('INSERT OR IGNORE INTO categories(id,slug,name) VALUES(?,?,?)').bind(c.slug,c.slug,c.name));
+  for(const e of seedEntries){
+   statements.push(db.prepare('INSERT OR IGNORE INTO entries(id,category_id,name,company,slug,image_url,source_url,website_url) VALUES(?,?,?,?,?,?,?,?)').bind(e.id,e.category_id,e.name,e.company,e.slug,e.image_url,e.source_url,e.website_url));
+   statements.push(db.prepare(`UPDATE entries SET
+    image_url=CASE WHEN image_url IS NULL OR image_url='' THEN ? ELSE image_url END,
+    source_url=CASE WHEN source_url='' THEN ? ELSE source_url END,
+    website_url=CASE WHEN website_url='' THEN ? ELSE website_url END
+    WHERE id=?`).bind(e.image_url,e.source_url,e.website_url,e.id));
+  }
+  for(let i=0;i<statements.length;i+=80)await db.batch(statements.slice(i,i+80));
+ })().catch(e=>{seeded=null;throw e;});}await seeded;
 }
-const safeTables=new Set(['entries','matchups','votes','submissions','removal_requests']);
+const safeTablesnew Set(['entries','matchups','votes','submissions','removal_requests']);
 const fields:Record<string,Set<string>>={
  entries:new Set(['id','category_id','name','company','slug','image_url','source_url','website_url','elo_rating','wins','losses','total_votes','active','submission_status','created_at']),
  matchups:new Set(['id','session_id','category_id','left_id','right_id','used','created_at']),
