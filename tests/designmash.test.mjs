@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import {readFileSync,existsSync} from 'node:fs';
+import ts from 'typescript';
+const dataSource=readFileSync(new URL('../lib/designmash/data.ts',import.meta.url),'utf8');
+const data=await import('data:text/javascript;base64,'+Buffer.from(ts.transpile(dataSource,{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022})).toString('base64'));
+const matchSource=readFileSync(new URL('../lib/designmash/matchmaking.ts',import.meta.url),'utf8');
+const mm=await import('data:text/javascript;base64,'+Buffer.from(ts.transpile(matchSource,{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022})).toString('base64'));
+test('exactly six concrete pools plus random, with 10 unique entries in each',()=>{
+ assert.equal(data.categories.length,6);assert.equal(data.seedEntries.length,60);assert.equal(new Set(data.seedEntries.map(e=>e.id)).size,60);
+ for(const c of data.categories){const pool=data.seedEntries.filter(e=>e.category_id===c.slug);assert.equal(pool.length,10);assert.ok(pool.every(e=>e.elo_rating===1500&&e.total_votes===0));}
+});
+test('all logo assets resolve locally',()=>{for(const e of data.seedEntries.filter(e=>e.category_id==='logos'))assert.ok(existsSync(new URL('../public'+e.image_url,import.meta.url)),e.name);});
+test('matchmaking never repeats a pair until all 45 are exhausted',()=>{
+ const pool=data.seedEntries.filter(e=>e.category_id==='names');const recent=[];
+ for(let i=0;i<45;i++){const [a,b]=mm.choosePair(pool,recent);assert.notEqual(a.id,b.id);assert.equal(a.category_id,b.category_id);const key=mm.pairKey(a.id,b.id);assert.ok(!recent.includes(key));recent.push(key);}
+ assert.ok(mm.choosePair(pool,recent));
+});
+test('mixed input cannot create cross-category matchups',()=>{for(let i=0;i<300;i++){const [a,b]=mm.choosePair(data.seedEntries,[]);assert.equal(a.category_id,b.category_id);}});
+test('fewer-battle entries have a measurable selection advantage',()=>{
+ const pool=data.seedEntries.filter(e=>e.category_id==='names').map((e,i)=>({...e,total_votes:i?1000:0}));let n=0;
+ for(let i=0;i<4000;i++)if(mm.choosePair(pool,[]).some(e=>e.id===pool[0].id))n++;
+ assert.ok(n>950,`${n} under-exposed appearances`);
+});
+test('undersized pools return no pair',()=>{assert.equal(mm.choosePair([],[]),null);assert.equal(mm.choosePair([data.seedEntries[0]],[]),null);});
+
+test('both competitors are replaced between successive rounds',()=>{
+ const pool=data.seedEntries.filter(e=>e.category_id==='logos');let previous=[];const recent=[];
+ for(let i=0;i<500;i++){const pair=mm.choosePair(pool,recent,Math.random,previous);assert.ok(pair);assert.ok(pair.every(e=>!previous.includes(e.id)));previous=pair.map(e=>e.id);recent.push(mm.pairKey(...previous));if(recent.length>45)recent.shift();}
+});
+test('too few fresh competitors cannot silently carry a winner forward',()=>{
+ const pool=data.seedEntries.filter(e=>e.category_id==='logos').slice(0,3);assert.equal(mm.choosePair(pool,[],Math.random,pool.slice(0,2).map(e=>e.id)),null);
+});
