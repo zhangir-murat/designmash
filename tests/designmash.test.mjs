@@ -6,12 +6,12 @@ const dataSource=readFileSync(new URL('../lib/designmash/data.ts',import.meta.ur
 const data=await import('data:text/javascript;base64,'+Buffer.from(ts.transpile(dataSource,{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022})).toString('base64'));
 const matchSource=readFileSync(new URL('../lib/designmash/matchmaking.ts',import.meta.url),'utf8');
 const mm=await import('data:text/javascript;base64,'+Buffer.from(ts.transpile(matchSource,{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022})).toString('base64'));
-test('exactly six concrete pools plus random, with 10 unique entries in each',()=>{
- assert.equal(data.categories.length,6);assert.equal(data.seedEntries.length,60);assert.equal(new Set(data.seedEntries.map(e=>e.id)).size,60);
- for(const c of data.categories){const pool=data.seedEntries.filter(e=>e.category_id===c.slug);assert.equal(pool.length,10);assert.ok(pool.every(e=>e.elo_rating===1500&&e.total_votes===0));}
+test('six concrete pools contain the expanded verified dataset',()=>{
+ assert.equal(data.categories.length,6);assert.equal(data.seedEntries.length,316);assert.equal(new Set(data.seedEntries.map(e=>e.id)).size,316);
+ const expected={logos:76,names:100,'landing-page':60,'checkout-page':18,'chat-page':22,ceo:40};for(const c of data.categories){const pool=data.seedEntries.filter(e=>e.category_id===c.slug);assert.equal(pool.length,expected[c.slug]);assert.ok(pool.every(e=>e.elo_rating===1500&&e.total_votes===0));}
 });
 test('all logo assets resolve locally',()=>{for(const e of data.seedEntries.filter(e=>e.category_id==='logos'))assert.ok(existsSync(new URL('../public'+e.image_url,import.meta.url)),e.name);});
-test('matchmaking never repeats a pair until all 45 are exhausted',()=>{
+test('matchmaking avoids recent repeated pairs in the expanded pool',()=>{
  const pool=data.seedEntries.filter(e=>e.category_id==='names');const recent=[];
  for(let i=0;i<45;i++){const [a,b]=mm.choosePair(pool,recent);assert.notEqual(a.id,b.id);assert.equal(a.category_id,b.category_id);const key=mm.pairKey(a.id,b.id);assert.ok(!recent.includes(key));recent.push(key);}
  assert.ok(mm.choosePair(pool,recent));
