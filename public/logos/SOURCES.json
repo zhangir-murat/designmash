@@ -1,0 +1,534 @@
+[
+  {
+    "name": "Nike",
+    "file": "nike.svg",
+    "officialSource": "https://www.nike.com",
+    "artworkSource": "https://www.nike.com",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Adidas",
+    "file": "adidas.svg",
+    "officialSource": "https://www.adidas.com",
+    "artworkSource": "https://www.adidas.com",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Apple",
+    "file": "apple.svg",
+    "officialSource": "https://www.apple.com",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/apple.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Spotify",
+    "file": "spotify.svg",
+    "officialSource": "https://developer.spotify.com/documentation/general/design-and-branding/#using-our-logo",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/spotify.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Airbnb",
+    "file": "airbnb.svg",
+    "officialSource": "https://www.airbnb.com",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/airbnb.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Figma",
+    "file": "figma.svg",
+    "officialSource": "https://www.figma.com/using-the-figma-brand/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/figma.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Dropbox",
+    "file": "dropbox.svg",
+    "officialSource": "https://brand.dropbox.com/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/dropbox.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Notion",
+    "file": "notion.svg",
+    "officialSource": "https://www.notion.so",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/notion.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Pinterest",
+    "file": "pinterest.svg",
+    "officialSource": "https://business.pinterest.com/en/brand-guidelines",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/pinterest.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Mastercard",
+    "file": "mastercard.svg",
+    "officialSource": "https://www.mastercard.com/brandcenter/us/en/brand-requirements/mastercard.html",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/mastercard.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Google",
+    "file": "google.svg",
+    "officialSource": "https://about.google/brand-resource-center/brand-elements/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/google.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Meta",
+    "file": "meta.svg",
+    "officialSource": "https://about.meta.com/brand/resources/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/meta.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Tesla",
+    "file": "tesla.svg",
+    "officialSource": "https://www.tesla.com/tesla-gallery",
+    "artworkSource": "https://www.tesla.com/tesla-gallery",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Nvidia",
+    "file": "nvidia.svg",
+    "officialSource": "https://www.nvidia.com/en-us/about-nvidia/legal-info/logo-brand-usage",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/nvidia-icon-light.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Netflix",
+    "file": "netflix.svg",
+    "officialSource": "https://brand.netflix.com/en/assets/logos",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/netflix-icon.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "SAP",
+    "file": "sap.svg",
+    "officialSource": "https://www.sap.com",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/sap.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Intuit",
+    "file": "intuit.svg",
+    "officialSource": "https://www.intuit.com/company/press-room/logos",
+    "artworkSource": "https://www.intuit.com",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Shopify",
+    "file": "shopify.svg",
+    "officialSource": "https://www.shopify.com/brand-assets",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/shopify.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "HubSpot",
+    "file": "hubspot.svg",
+    "officialSource": "https://www.hubspot.com/style-guide",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/hubspot.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Atlassian",
+    "file": "atlassian.svg",
+    "officialSource": "https://atlassian.design/foundations/logos",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/atlassian.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Zoom",
+    "file": "zoom.svg",
+    "officialSource": "https://brand.zoom.us/usage-legal/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/zoom.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Box",
+    "file": "box.svg",
+    "officialSource": "https://www.box.com/en-gb/about-us/press",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/box.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Asana",
+    "file": "asana.svg",
+    "officialSource": "https://asana.com/brand",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/asana-logo.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "GitLab",
+    "file": "gitlab.svg",
+    "officialSource": "https://about.gitlab.com/handbook/marketing/corporate-marketing/brand-activation/trademark-guidelines/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/gitlab.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "GitHub",
+    "file": "github.svg",
+    "officialSource": "https://brand.github.com/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/github_light.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Palantir",
+    "file": "palantir.svg",
+    "officialSource": "https://github.com/palantir/conjure/blob/1b0d450dc52c4822b4c9d1da8c61ad7f78855fe5/docs/media/palantir-logo.svg",
+    "artworkSource": "https://github.com/palantir/conjure/blob/1b0d450dc52c4822b4c9d1da8c61ad7f78855fe5/docs/media/palantir-logo.svg",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Snowflake",
+    "file": "snowflake.svg",
+    "officialSource": "https://www.snowflake.com/brand-guidelines/",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/snowflake-icon.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Databricks",
+    "file": "databricks.svg",
+    "officialSource": "https://brand.databricks.com/Styleguide/Guide/",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/databricks-icon.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Cloudflare",
+    "file": "cloudflare.svg",
+    "officialSource": "https://www.cloudflare.com/trademark/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/cloudflare.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Okta",
+    "file": "okta.svg",
+    "officialSource": "https://www.okta.com/terms-of-use-for-okta-content/",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/okta-icon.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Datadog",
+    "file": "datadog.svg",
+    "officialSource": "https://www.datadoghq.com/about/resources/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/datadog.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "MongoDB",
+    "file": "mongodb.svg",
+    "officialSource": "https://www.mongodb.com/company/newsroom/brand-resources",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/mongodb-icon.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Stripe",
+    "file": "stripe.svg",
+    "officialSource": "https://stripe.com/newsroom/information",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/stripe.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "PayPal",
+    "file": "paypal.svg",
+    "officialSource": "https://newsroom.paypal-corp.com/media-resources",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/paypal.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Coinbase",
+    "file": "coinbase.svg",
+    "officialSource": "https://www.coinbase.com/press",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/coinbase.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Robinhood",
+    "file": "robinhood.svg",
+    "officialSource": "https://press.robinhood.com",
+    "artworkSource": "https://press.robinhood.com",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Nubank",
+    "file": "nubank.svg",
+    "officialSource": "https://nubank.com.br/en/press/",
+    "artworkSource": "https://nubank.com.br/en/press/",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Revolut",
+    "file": "revolut.svg",
+    "officialSource": "https://developer.revolut.com/docs/resources/marketing-assets-guidelines/marketing-guidelines",
+    "artworkSource": "https://developer.revolut.com/docs/resources/marketing-assets-guidelines/marketing-guidelines",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Wise",
+    "file": "wise.svg",
+    "officialSource": "https://wise.design/foundations/logo",
+    "artworkSource": "https://wise.com/public-resources/assets/logos/wise-personal/logo.svg",
+    "collection": "Brand website"
+  },
+  {
+    "name": "Klarna",
+    "file": "klarna.svg",
+    "officialSource": "https://klarna.design",
+    "artworkSource": "https://klarna.design",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Uber",
+    "file": "uber.svg",
+    "officialSource": "https://brand.uber.com/",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/uber_light.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Lyft",
+    "file": "lyft.svg",
+    "officialSource": "https://www.lyft.com/press",
+    "artworkSource": "https://www.lyft.com/press",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "DoorDash",
+    "file": "doordash.svg",
+    "officialSource": "https://www.doordash.com/about/",
+    "artworkSource": "https://www.doordash.com/about/",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Instacart",
+    "file": "instacart.svg",
+    "officialSource": "https://www.instacart.com/press",
+    "artworkSource": "https://www.instacart.com/assets/beetstrap/brand/2022/instacart-logo-color-6678cb82d531f8910d5ba270a11a7e9b56fc261371bda42ea7a5abeff3492e1c.svg",
+    "collection": "Brand website"
+  },
+  {
+    "name": "Reddit",
+    "file": "reddit.svg",
+    "officialSource": "https://redditinc.com/brand",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/reddit.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "X",
+    "file": "x.svg",
+    "officialSource": "https://about.x.com/en/who-we-are/brand-toolkit",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/x.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Discord",
+    "file": "discord.svg",
+    "officialSource": "https://discord.com/branding",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/discord.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Twitch",
+    "file": "twitch.svg",
+    "officialSource": "https://brand.twitch.tv",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/twitch.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Roblox",
+    "file": "roblox.svg",
+    "officialSource": "https://en.help.roblox.com/hc/en-us/articles/115001708126-Roblox-Name-and-Logo-Community-Usage-Guidelines",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/roblox_light.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Epic Games",
+    "file": "epic-games.svg",
+    "officialSource": "https://dev.epicgames.com/docs/services/en-US/EpicAccountServices/DesignGuidelines/index.html#epicgamesbrandguidelines",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/epicgames-icon-light.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Duolingo",
+    "file": "duolingo.svg",
+    "officialSource": "https://design.duolingo.com",
+    "artworkSource": "https://design.duolingo.com",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "TikTok",
+    "file": "tiktok.svg",
+    "officialSource": "https://tiktok.com",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/tiktok-icon-light.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Yelp",
+    "file": "yelp.svg",
+    "officialSource": "https://www.yelp.com/brand",
+    "artworkSource": "https://www.yelp.com/brand",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Booking.com",
+    "file": "booking-com.svg",
+    "officialSource": "https://www.bookingholdings.com/media-room",
+    "artworkSource": "https://www.bookingholdings.com/media-room",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Expedia",
+    "file": "expedia.svg",
+    "officialSource": "https://brandfolder.com/portals/brand-expedia",
+    "artworkSource": "https://www.expedia.com/_dms/header/logo.svg?locale=en_US&siteid=1&2",
+    "collection": "Brand website"
+  },
+  {
+    "name": "eBay",
+    "file": "ebay.svg",
+    "officialSource": "https://go.developer.ebay.com/logos",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/ebay.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Etsy",
+    "file": "etsy.svg",
+    "officialSource": "https://www.etsy.com/uk/press",
+    "artworkSource": "https://www.etsy.com/uk/press",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Intel",
+    "file": "intel.svg",
+    "officialSource": "https://www.intel.com/content/www/us/en/newsroom/resources/press-kits-intel-overview.html",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/intel.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "AMD",
+    "file": "amd.svg",
+    "officialSource": "https://www.amd.com",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/amd.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Qualcomm",
+    "file": "qualcomm.svg",
+    "officialSource": "https://www.qualcomm.com",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/qualcomm.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Cisco",
+    "file": "cisco.svg",
+    "officialSource": "https://www.cisco.com",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/cisco_light.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Dell",
+    "file": "dell.svg",
+    "officialSource": "https://brand.delltechnologies.com/logos/",
+    "artworkSource": "https://www.dell.com",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "HP",
+    "file": "hp.svg",
+    "officialSource": "https://brandcentral.hp.com/us/en/elements/hp-logo.html",
+    "artworkSource": "https://brandcentral.hp.com/us/en/elements/hp-logo.html",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Lenovo",
+    "file": "lenovo.svg",
+    "officialSource": "https://news.lenovo.com/press-kits/",
+    "artworkSource": "https://news.lenovo.com/press-kits/",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Samsung",
+    "file": "samsung.svg",
+    "officialSource": "https://www.samsung.com/us/about-us/brand-identity/logo/",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/samsung.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Sony",
+    "file": "sony.svg",
+    "officialSource": "https://www.sony.com",
+    "artworkSource": "https://www.sony.com",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Anthropic",
+    "file": "anthropic.svg",
+    "officialSource": "https://www.anthropic.com",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/anthropic_black.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Target",
+    "file": "target.svg",
+    "officialSource": "https://www.target.com",
+    "artworkSource": "https://www.target.com",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Newegg",
+    "file": "newegg.svg",
+    "officialSource": "https://www.newegg.com",
+    "artworkSource": "https://c1.neweggimages.com/WebResource/Themes/Nest/logos/Newegg_full_color_logo_RGB.SVG",
+    "collection": "Brand website"
+  },
+  {
+    "name": "Algolia",
+    "file": "algolia.svg",
+    "officialSource": "https://algolia.frontify.com/d/1AZwVNcFZiu7/style-guide",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/algolia.svg",
+    "collection": "SVGL"
+  },
+  {
+    "name": "Razorpay",
+    "file": "razorpay.svg",
+    "officialSource": "https://razorpay.com/newsroom/brand-assets/",
+    "artworkSource": "https://razorpay.com/newsroom/brand-assets/",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Brex",
+    "file": "brex.svg",
+    "officialSource": "https://www.brex.com/journal/press",
+    "artworkSource": "https://www.brex.com/journal/press",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "Mixpanel",
+    "file": "mixpanel.svg",
+    "officialSource": "https://brand.mixpanel.com",
+    "artworkSource": "https://mixpanel.com",
+    "collection": "Supplied artwork / Simple Icons brand color"
+  },
+  {
+    "name": "PagerDuty",
+    "file": "pagerduty.svg",
+    "officialSource": "https://www.pagerduty.com/brand/",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/pagerduty-icon.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "Gusto",
+    "file": "gusto.svg",
+    "officialSource": "https://gusto.com",
+    "artworkSource": "https://github.com/gilbarbara/logos/blob/main/logos/gusto.svg",
+    "collection": "SVG Logos"
+  },
+  {
+    "name": "OpenSea",
+    "file": "opensea.svg",
+    "officialSource": "https://docs.opensea.io",
+    "artworkSource": "https://github.com/pheralb/svgl/blob/main/static/library/opensea.svg",
+    "collection": "SVGL"
+  }
+]
