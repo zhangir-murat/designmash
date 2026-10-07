@@ -140,11 +140,30 @@ const ceos = [
   ['Patrick Collison', 'Stripe', 'https://stripe.com'], ['Melanie Perkins', 'Canva', 'https://www.canva.com'],
   ['Tobias Lütke', 'Shopify', 'https://www.shopify.com'], ['Aaron Levie', 'Box', 'https://www.box.com'],
 ];
-const checkoutScreenshotNames = new Set(checkoutNew.map(row => row[0]));
+const checkoutScreenshots: Record<string, string> = {
+  "Google Store Checkout": "/checkout/google-store.webp",
+  "Nintendo Checkout": "/checkout/nintendo.webp",
+  "Steam Checkout": "/checkout/steam.webp",
+  "Sonos Checkout": "/checkout/sonos.webp",
+  "Bose Checkout": "/checkout/bose.webp",
+  "IKEA Checkout": "/checkout/ikea.webp",
+  "Ulta Checkout": "/checkout/ulta.webp",
+  "Foot Locker Checkout": "/checkout/foot-locker.webp",
+  "Casper Checkout": "/checkout/casper.webp",
+  "Logitech Checkout": "/checkout/logitech.webp",
+  "Newegg Checkout": "/checkout/newegg.webp",
+  "Under Armour Checkout": "/checkout/under-armour.webp",
+  "Gap Checkout": "/checkout/gap.webp",
+  "Razer Checkout": "/checkout/razer.webp",
+  "Barnes & Noble Checkout": "/checkout/barnes-noble.webp",
+  "Champs Sports Checkout": "/checkout/champs-sports.webp",
+  "Crocs Checkout": "/checkout/crocs.webp",
+  "Fanatical Checkout": "/checkout/fanatical.webp"
+};
 const pools: Record<Category, string[][]> = { logos: brands, names, 'landing-page': landing, 'checkout-page': checkout, 'chat-page': chat, ceo: ceos };
 export const seedEntries: Entry[] = categories.flatMap(c => pools[c.slug].map((row) => {
   const slug = `${c.slug}-${row[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '')}`;
-  return { id: slug, slug, category_id: c.slug, name: row[0], company: row[1], website_url: row[2], source_url: row[2], image_url: c.slug === 'logos' ? `/logos/${slug.slice('logos-'.length)}.svg` : c.slug === 'checkout-page' && checkoutScreenshotNames.has(row[0]) ? `https://s0.wp.com/mshots/v1/${encodeURIComponent(row[2])}?w=1280` : null, elo_rating: 1500, wins: 0, losses: 0, total_votes: 0, active: true, submission_status: 'approved' };
+  return { id: slug, slug, category_id: c.slug, name: row[0], company: row[1], website_url: row[2], source_url: row[2], image_url: c.slug === 'logos' ? `/logos/${slug.slice('logos-'.length)}.svg` : c.slug === 'checkout-page' ? checkoutScreenshots[row[0]] ?? null : null, elo_rating: 1500, wins: 0, losses: 0, total_votes: 0, active: true, submission_status: 'approved' };
 }));
 export const categoryLabel = (slug: string) => categories.find(c => c.slug === slug)?.label ?? slug;
 export const isCategory = (value: string): value is Category => categories.some(c => c.slug === value);

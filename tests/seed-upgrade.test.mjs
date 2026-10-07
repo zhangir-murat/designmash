@@ -30,7 +30,7 @@ test('existing database receives 189 new entries without resetting or restoring 
  const nike=sqlite.prepare("SELECT * FROM entries WHERE id='logos-nike'").get();assert.equal(nike.elo_rating,1701);assert.equal(nike.total_votes,7);assert.equal(nike.name,'Nike edited');
  const cursor=sqlite.prepare("SELECT * FROM entries WHERE id='names-cursor'").get();assert.equal(cursor.active,0);assert.equal(cursor.submission_status,'rejected');
  assert.equal(sqlite.prepare("SELECT count(*) AS n FROM entries WHERE id='logos-adidas'").get().n,0);
- assert.equal(sqlite.prepare("SELECT count(*) AS n FROM seed_updates").get().n,2);
+ assert.equal(sqlite.prepare("SELECT count(*) AS n FROM seed_updates").get().n,3);
  sqlite.exec("DELETE FROM entries WHERE id='logos-google'");
  await (await freshStore()).initialize(db);
  assert.equal(sqlite.prepare('SELECT count(*) AS n FROM entries').get().n,247);
@@ -51,7 +51,19 @@ test('an already updated live database receives only the 33 checkout additions o
  sqlite.exec("DELETE FROM entries WHERE id='checkout-page-microsoft-store-checkout'");
  await (await freshStore()).initialize(db);
  assert.equal(sqlite.prepare("SELECT count(*) AS n FROM entries WHERE category_id='checkout-page'").get().n,42);
- assert.equal(sqlite.prepare('SELECT count(*) AS n FROM seed_updates').get().n,2);sqlite.close();
+ assert.equal(sqlite.prepare('SELECT count(*) AS n FROM seed_updates').get().n,3);sqlite.close();
+});
+test('capture upgrade fixes old mShots URLs while preserving ratings, custom images and deletions',async()=>{
+ const sqlite=new DatabaseSync(':memory:');sqlite.exec(oldSchema);sqlite.exec(upgrade);
+ for(const c of categories)sqlite.prepare('INSERT INTO categories(id,slug,name) VALUES(?,?,?)').run(c.slug,c.slug,c.name);
+ for(const e of seedEntries)sqlite.prepare('INSERT INTO entries(id,category_id,name,slug,image_url) VALUES(?,?,?,?,?)').run(e.id,e.category_id,e.name,e.slug,e.image_url);
+ sqlite.exec("INSERT INTO seed_updates(id) VALUES('logos-names-2026-10-06'),('checkout-pages-2026-10-07');UPDATE entries SET image_url='https://s0.wp.com/mshots/v1/old?w=1280',elo_rating=1777,total_votes=8 WHERE id='checkout-page-ulta-checkout';UPDATE entries SET image_url='/api/images/owner-capture.webp' WHERE id='checkout-page-ikea-checkout';DELETE FROM entries WHERE id='checkout-page-nintendo-checkout';");
+ const db=adapter(sqlite);await (await freshStore()).initialize(db);
+ const ulta=sqlite.prepare("SELECT * FROM entries WHERE id='checkout-page-ulta-checkout'").get();assert.equal(ulta.image_url,'/checkout/ulta.webp');assert.equal(ulta.elo_rating,1777);assert.equal(ulta.total_votes,8);
+ assert.equal(sqlite.prepare("SELECT image_url FROM entries WHERE id='checkout-page-ikea-checkout'").get().image_url,'/api/images/owner-capture.webp');
+ assert.equal(sqlite.prepare("SELECT count(*) AS n FROM entries WHERE id='checkout-page-nintendo-checkout'").get().n,0);
+ sqlite.exec("UPDATE entries SET image_url=NULL WHERE id='checkout-page-ulta-checkout'");await (await freshStore()).initialize(db);
+ assert.equal(sqlite.prepare("SELECT image_url FROM entries WHERE id='checkout-page-ulta-checkout'").get().image_url,null);sqlite.close();
 });
 test('SQL seeds and frontend pools agree on IDs, names, image paths, and category counts',()=>{
  const sqlite=new DatabaseSync(':memory:');sqlite.exec(oldSchema);

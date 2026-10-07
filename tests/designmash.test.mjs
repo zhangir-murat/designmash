@@ -11,6 +11,13 @@ test('exactly six concrete pools plus random, with 76 logos, 100 names, 43 check
  for(const c of data.categories){const pool=data.seedEntries.filter(e=>e.category_id===c.slug);assert.equal(pool.length,c.slug==='logos'?76:c.slug==='names'?100:c.slug==='checkout-page'?43:10);assert.ok(pool.every(e=>e.elo_rating===1500&&e.total_votes===0));}
 });
 test('all logo assets resolve locally',()=>{for(const e of data.seedEntries.filter(e=>e.category_id==='logos'))assert.ok(existsSync(new URL('../public'+e.image_url,import.meta.url)),e.name);});
+test('checkout voting has enough locally bundled captures for two new competitors per round',()=>{
+ const ready=data.seedEntries.filter(e=>e.category_id==='checkout-page'&&e.image_url);
+ assert.ok(ready.length>=4);
+ for(const e of ready){assert.ok(e.image_url.startsWith('/checkout/'));assert.ok(existsSync(new URL('../public'+e.image_url,import.meta.url)),e.name);}
+ assert.equal(data.seedEntries.find(e=>e.id==='checkout-page-ulta-checkout').image_url,'/checkout/ulta.webp');
+ assert.equal(data.seedEntries.find(e=>e.id==='checkout-page-lego-checkout').image_url,null);
+});
 test('matchmaking never repeats a pair until all 45 are exhausted',()=>{
  const pool=data.seedEntries.filter(e=>e.category_id==='chat-page');const recent=[];
  for(let i=0;i<45;i++){const [a,b]=mm.choosePair(pool,recent);assert.notEqual(a.id,b.id);assert.equal(a.category_id,b.category_id);const key=mm.pairKey(a.id,b.id);assert.ok(!recent.includes(key));recent.push(key);}
@@ -23,6 +30,17 @@ test('fewer-battle entries have a measurable selection advantage',()=>{
  assert.ok(n>950,`${n} under-exposed appearances`);
 });
 test('undersized pools return no pair',()=>{assert.equal(mm.choosePair([],[]),null);assert.equal(mm.choosePair([data.seedEntries[0]],[]),null);});
+test('checkout matchups exclude missing captures and on-demand screenshot URLs',()=>{
+ const source=data.seedEntries.filter(e=>e.category_id==='checkout-page').slice(0,6);
+ const pool=source.map((e,i)=>({...e,image_url:i===0?null:i===1?'https://s0.wp.com/mshots/v1/pending?w=1280':`/checkout/${e.slug}.webp`}));
+ let previous=[];
+ for(let i=0;i<20;i++){
+  const pair=mm.choosePair(pool,[],Math.random,previous);assert.ok(pair);
+  assert.ok(pair.every(e=>e.image_url?.startsWith('/checkout/')));
+  assert.ok(pair.every(e=>!previous.includes(e.id)));previous=pair.map(e=>e.id);
+ }
+ assert.equal(mm.choosePair(pool.slice(0,2),[]),null);
+});
 
 test('both competitors are replaced between successive rounds',()=>{
  const pool=data.seedEntries.filter(e=>e.category_id==='logos');let previous=[];const recent=[];

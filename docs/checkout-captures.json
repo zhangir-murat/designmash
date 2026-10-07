@@ -1,0 +1,299 @@
+[
+  {
+    "id": "checkout-page-microsoft-store-checkout",
+    "name": "Microsoft Store Checkout",
+    "source_url": "https://www.microsoft.com/en-us/store/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.microsoft.com%2Fen-us%2Fstore%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-google-store-checkout",
+    "name": "Google Store Checkout",
+    "source_url": "https://store.google.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fstore.google.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/google-store.webp"
+  },
+  {
+    "id": "checkout-page-nintendo-checkout",
+    "name": "Nintendo Checkout",
+    "source_url": "https://www.nintendo.com/us/cart/",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.nintendo.com%2Fus%2Fcart%2F?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/nintendo.webp"
+  },
+  {
+    "id": "checkout-page-playstation-store-checkout",
+    "name": "PlayStation Store Checkout",
+    "source_url": "https://store.playstation.com/en-us/pages/cart/",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fstore.playstation.com%2Fen-us%2Fpages%2Fcart%2F?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-xbox-checkout",
+    "name": "Xbox Checkout",
+    "source_url": "https://www.xbox.com/en-US/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.xbox.com%2Fen-US%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-steam-checkout",
+    "name": "Steam Checkout",
+    "source_url": "https://store.steampowered.com/cart/",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fstore.steampowered.com%2Fcart%2F?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/steam.webp"
+  },
+  {
+    "id": "checkout-page-sonos-checkout",
+    "name": "Sonos Checkout",
+    "source_url": "https://www.sonos.com/en-us/emptycart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sonos.com%2Fen-us%2Femptycart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/sonos.webp"
+  },
+  {
+    "id": "checkout-page-bose-checkout",
+    "name": "Bose Checkout",
+    "source_url": "https://www.bose.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.bose.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/bose.webp"
+  },
+  {
+    "id": "checkout-page-lego-checkout",
+    "name": "LEGO Checkout",
+    "source_url": "https://www.lego.com/en-us/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.lego.com%2Fen-us%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-ikea-checkout",
+    "name": "IKEA Checkout",
+    "source_url": "https://www.ikea.com/us/en/shoppingcart/",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.ikea.com%2Fus%2Fen%2Fshoppingcart%2F?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/ikea.webp"
+  },
+  {
+    "id": "checkout-page-zara-checkout",
+    "name": "Zara Checkout",
+    "source_url": "https://www.zara.com/us/en/shop/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.zara.com%2Fus%2Fen%2Fshop%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-sephora-checkout",
+    "name": "Sephora Checkout",
+    "source_url": "https://www.sephora.com/basket",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.sephora.com%2Fbasket?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-ulta-checkout",
+    "name": "Ulta Checkout",
+    "source_url": "https://www.ulta.com/bag",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.ulta.com%2Fbag?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/ulta.webp"
+  },
+  {
+    "id": "checkout-page-nordstrom-checkout",
+    "name": "Nordstrom Checkout",
+    "source_url": "https://www.nordstrom.com/shopping-bag",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.nordstrom.com%2Fshopping-bag?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-lowe-s-checkout",
+    "name": "Lowe's Checkout",
+    "source_url": "https://www.lowes.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.lowes.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-foot-locker-checkout",
+    "name": "Foot Locker Checkout",
+    "source_url": "https://www.footlocker.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.footlocker.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/foot-locker.webp"
+  },
+  {
+    "id": "checkout-page-allbirds-checkout",
+    "name": "Allbirds Checkout",
+    "source_url": "https://www.allbirds.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.allbirds.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-casper-checkout",
+    "name": "Casper Checkout",
+    "source_url": "https://casper.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcasper.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/casper.webp"
+  },
+  {
+    "id": "checkout-page-peloton-checkout",
+    "name": "Peloton Checkout",
+    "source_url": "https://www.onepeloton.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.onepeloton.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-logitech-checkout",
+    "name": "Logitech Checkout",
+    "source_url": "https://www.logitech.com/en-us/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.logitech.com%2Fen-us%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/logitech.webp"
+  },
+  {
+    "id": "checkout-page-newegg-checkout",
+    "name": "Newegg Checkout",
+    "source_url": "https://secure.newegg.com/shop/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsecure.newegg.com%2Fshop%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/newegg.webp"
+  },
+  {
+    "id": "checkout-page-under-armour-checkout",
+    "name": "Under Armour Checkout",
+    "source_url": "https://www.underarmour.com/en-us/cart/",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.underarmour.com%2Fen-us%2Fcart%2F?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/under-armour.webp"
+  },
+  {
+    "id": "checkout-page-gap-checkout",
+    "name": "Gap Checkout",
+    "source_url": "https://secure-www.gap.com/shopping-bag",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fsecure-www.gap.com%2Fshopping-bag?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/gap.webp"
+  },
+  {
+    "id": "checkout-page-dsw-checkout",
+    "name": "DSW Checkout",
+    "source_url": "https://www.dsw.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.dsw.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-jcpenney-checkout",
+    "name": "JCPenney Checkout",
+    "source_url": "https://www.jcpenney.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.jcpenney.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-razer-checkout",
+    "name": "Razer Checkout",
+    "source_url": "https://www.razer.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.razer.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/razer.webp"
+  },
+  {
+    "id": "checkout-page-corsair-checkout",
+    "name": "Corsair Checkout",
+    "source_url": "https://www.corsair.com/us/en/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-barnes-noble-checkout",
+    "name": "Barnes & Noble Checkout",
+    "source_url": "https://www.barnesandnoble.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.barnesandnoble.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/barnes-noble.webp"
+  },
+  {
+    "id": "checkout-page-champs-sports-checkout",
+    "name": "Champs Sports Checkout",
+    "source_url": "https://www.champssports.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.champssports.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/champs-sports.webp"
+  },
+  {
+    "id": "checkout-page-reebok-checkout",
+    "name": "Reebok Checkout",
+    "source_url": "https://www.reebok.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.reebok.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-crocs-checkout",
+    "name": "Crocs Checkout",
+    "source_url": "https://www.crocs.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.crocs.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/crocs.webp"
+  },
+  {
+    "id": "checkout-page-gog-checkout",
+    "name": "GOG Checkout",
+    "source_url": "https://www.gog.com/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.gog.com%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "unavailable",
+    "reason": "Capture showed a bot wall, error, raw response, obstructing modal, or incomplete page."
+  },
+  {
+    "id": "checkout-page-fanatical-checkout",
+    "name": "Fanatical Checkout",
+    "source_url": "https://www.fanatical.com/en/cart",
+    "capture_source": "https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.fanatical.com%2Fen%2Fcart?w=1280",
+    "captured_at": "2026-10-07",
+    "status": "ready",
+    "image_url": "/checkout/fanatical.webp"
+  }
+]

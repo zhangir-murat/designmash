@@ -1,6 +1,9 @@
 import type { Entry } from './data';
 export function pairKey(a: string, b: string) { return [a, b].sort().join('|'); }
 export function choosePair(entries: Entry[], recent: string[], random = Math.random, excluded: string[] = []): [Entry, Entry] | null {
+  // Checkout comparisons require real captures. Keep pending records and their
+  // ratings, but never ask visitors to vote on missing or on-demand screenshots.
+  entries = entries.filter(e => e.category_id !== 'checkout-page' || Boolean(e.image_url && !e.image_url.startsWith('https://s0.wp.com/mshots/')));
   if (entries.length < 2) return null;
   const options: { pair: [Entry, Entry]; weight: number }[] = [];
   const top = new Set([...entries].sort((a,b) => b.elo_rating-a.elo_rating).slice(0,4).map(e=>e.id));

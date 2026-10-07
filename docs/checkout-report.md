@@ -117,3 +117,13 @@ a later request returned a screenshot of LEGO's bot-block page. The renderer
 can therefore be blocked even where curl-based cart verification succeeds.
 The interface retries pending mShots captures automatically. Actual checkout
 images should be reviewed or replaced with provided captures where blocked.
+
+
+## Screenshot correction (2026-10-07)
+
+All 33 screenshot responses were downloaded and visually reviewed. Only 18
+showed usable cart screens; these are now bundled locally. The other 15 showed
+bot walls, errors, raw responses, obstructing overlays, or incomplete pages.
+The ten original placeholder records also have no usable capture. All 43
+records and scores remain stored, but checkout matchups select only records
+with a usable screenshot. See checkout-captures.json for the capture inventory.

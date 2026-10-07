@@ -20,6 +20,15 @@ export async function initialize(db:Database){
  for(const e of rows)statements.push(db.prepare('INSERT OR IGNORE INTO entries(id,category_id,name,company,slug,image_url,source_url,website_url) SELECT ?,?,?,?,?,?,?,? WHERE NOT EXISTS(SELECT 1 FROM seed_updates WHERE id=?)').bind(e.id,e.category_id,e.name,e.company,e.slug,e.image_url,e.source_url,e.website_url,version));
  statements.push(db.prepare('INSERT OR IGNORE INTO seed_updates(id) VALUES(?)').bind(version));
  await db.batch(statements);}
+ const captureVersion='checkout-captures-2026-10-07';
+ if(!await db.prepare('SELECT id FROM seed_updates WHERE id=?').bind(captureVersion).first()){
+  // Replace only empty or old mShots fields. Preserve custom captures, edited
+  // entries, moderation decisions, ratings, votes, and deleted records.
+  const captures=seedEntries.filter(e=>e.category_id==='checkout-page'&&e.image_url?.startsWith('/checkout/'));
+  const statements=captures.map(e=>db.prepare("UPDATE entries SET image_url=? WHERE id=? AND (image_url IS NULL OR image_url LIKE 'https://s0.wp.com/mshots/%') AND NOT EXISTS(SELECT 1 FROM seed_updates WHERE id=?)").bind(e.image_url,e.id,captureVersion));
+  statements.push(db.prepare('INSERT OR IGNORE INTO seed_updates(id) VALUES(?)').bind(captureVersion));
+  await db.batch(statements);
+ }
  })().catch(e=>{seeded=null;throw e;});}await seeded;
 }
 const safeTables=new Set(['entries','matchups','votes','submissions','removal_requests']);

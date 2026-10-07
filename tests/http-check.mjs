@@ -27,6 +27,14 @@ assert.equal(testDatabase.prepare('SELECT count(*) AS n FROM votes WHERE session
 for(let i=0;i<12;i++){previous=current;current=await (await req('/api/matchup?category=names&previous='+previous.challenge)).json();assert.ok(current.pair.every(e=>!previous.pair.some(old=>old.id===e.id)));}
 for(const category of ['logos','ceo','names']){current=await (await req('/api/matchup?category='+category)).json();assert.equal(current.category,category);assert.ok(current.challenge);}
 const refreshed=await (await req('/api/matchup?category=names')).json();assert.notEqual(refreshed.challenge,current.challenge);assert.ok(refreshed.pair.every(e=>!current.pair.some(old=>old.id===e.id)));
+// Checkout voting must use bundled, reviewed captures on every fresh round.
+cookie='';let checkout=await (await req('/api/matchup?category=checkout-page')).json();
+for(let i=0;i<20;i++){
+ assert.ok(checkout.pair.every(e=>e.image_url?.startsWith('/checkout/')));
+ const voted=await req('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({challenge:checkout.challenge,winner:checkout.pair[i%2].id})});assert.equal(voted.status,200,await voted.text());
+ const next=await (await req('/api/matchup?category=checkout-page&previous='+checkout.challenge)).json();
+ assert.ok(next.pair.every(e=>!checkout.pair.some(old=>old.id===e.id)));checkout=next;
+}
 const anon=await req('/api/admin/entries');assert.equal(anon.status,401);
 const denied=await req('/api/admin/entries',{headers:{'oai-authenticated-user-id':'other','oai-authenticated-user-email':'other@example.com'}});assert.equal(denied.status,403);
 const admin=await req('/api/admin/status',{headers:auth});const who=await admin.json();assert.equal(admin.status,200,JSON.stringify(who));assert.equal(who.user.email,auth['oai-authenticated-user-email']);
